@@ -6,7 +6,7 @@
 /*   By: linuxusr <linuxusr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 11:29:59 by linuxusr          #+#    #+#             */
-/*   Updated: 2021/09/28 22:12:39 by linuxusr         ###   ########.fr       */
+/*   Updated: 2021/09/29 18:55:21 by linuxusr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,13 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	i = 0;
+	i = -1;
 	j = 0;
 	str = (char *)malloc(sizeof(*str) * ((ft_strlen(s1) + ft_strlen(s2)) + 1));
 	if (str == NULL)
 		return (NULL);
-	while (s1[i] != '\0')
-	{
+	while (s1[++i] != '\0')
 		str[i] = s1[i];
-		i++;
-	}
 	while (s2[j] != '\0')
 		str[i++] = s2[j++];
 	str[i] = '\0';
@@ -82,10 +79,9 @@ char	*ft_str_nl_cut(char *s)
 	i = 0;
 	if (s[i] == '\0')
 		return (NULL);
-	if(ft_search_nl(s) == 0)
+	size = ft_search_nl(s) + 1;
+	if (ft_search_nl(s) == 0)
 		size = ft_strlen(s) + 1;
-	else
-		size = ft_search_nl(s) + 1;
 	str = (char *)malloc(sizeof(*str) * (size + 1));
 	if (str == NULL)
 		return (NULL);

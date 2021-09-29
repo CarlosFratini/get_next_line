@@ -6,12 +6,12 @@
 /*   By: linuxusr <linuxusr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 22:35:44 by linuxusr          #+#    #+#             */
-/*   Updated: 2021/09/28 18:05:22 by linuxusr         ###   ########.fr       */
+/*   Updated: 2021/09/29 18:54:26 by linuxusr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
