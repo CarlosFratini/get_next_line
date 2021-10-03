@@ -3,25 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linuxusr <linuxusr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 23:22:35 by linuxusr          #+#    #+#             */
-/*   Updated: 2021/09/28 21:42:11 by linuxusr         ###   ########.fr       */
+/*   Updated: 2021/10/03 18:52:11 by ceduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
+
+int	ft_isnl(char *s)
+{
+	if (s == NULL)
+		return (0);
+	while (*s != '\0')
+	{
+		if (*s++ == '\n')
+			return (1);
+	}
+	return (0);
+}
 
 static char	*ft_get_line(char *line, int fd)
 {
 	char	*buffer;
 	int		nbytes;
 
-	buffer = (char *)malloc(sizeof(*buffer) * (BUFFER_SIZE + 1));
+	buffer = (char *)malloc(sizeof(*buffer) + (BUFFER_SIZE + 1));
 	if (buffer == NULL)
 		return (NULL);
 	nbytes = 1;
-	while (ft_search_nl(line) == 0 && nbytes != 0)
+	while (!ft_isnl(line) && nbytes != 0)
 	{
 		nbytes = read(fd, buffer, BUFFER_SIZE);
 		if (nbytes == -1)

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linuxusr <linuxusr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 11:29:59 by linuxusr          #+#    #+#             */
-/*   Updated: 2021/09/29 18:55:21 by linuxusr         ###   ########.fr       */
+/*   Updated: 2021/10/03 18:50:30 by ceduard2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 size_t	ft_strlen(char *s)
 {
@@ -27,9 +26,9 @@ size_t	ft_strlen(char *s)
 	return (i);
 }
 
-int	ft_search_nl(char *s)
+size_t	ft_search_nl(char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (s == NULL)
@@ -40,15 +39,15 @@ int	ft_search_nl(char *s)
 			return (i);
 		i++;
 	}
-	return (0);
+	return (i);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	i;
-	size_t	j;
 	char	*str;
 
+	i = 0;
 	if (s1 == NULL)
 	{
 		s1 = (char *)malloc(sizeof(*s1));
@@ -56,15 +55,16 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	i = -1;
-	j = 0;
 	str = (char *)malloc(sizeof(*str) * ((ft_strlen(s1) + ft_strlen(s2)) + 1));
 	if (str == NULL)
 		return (NULL);
-	while (s1[++i] != '\0')
+	while (s1[i] != '\0')
+	{
 		str[i] = s1[i];
-	while (s2[j] != '\0')
-		str[i++] = s2[j++];
+		i++;
+	}
+	while (*s2 != '\0')
+		str[i++] = *s2++;
 	str[i] = '\0';
 	free(s1);
 	return (str);
@@ -80,8 +80,6 @@ char	*ft_str_nl_cut(char *s)
 	if (s[i] == '\0')
 		return (NULL);
 	size = ft_search_nl(s) + 1;
-	if (ft_search_nl(s) == 0)
-		size = ft_strlen(s) + 1;
 	str = (char *)malloc(sizeof(*str) * (size + 1));
 	if (str == NULL)
 		return (NULL);
@@ -105,10 +103,8 @@ char	*ft_str_nl_rmd(char *s)
 	int		i;
 	int		j;
 
-	i = 0;
+	i = ft_search_nl(s);
 	j = 0;
-	while (s[i] != '\0' && s[i] != '\n')
-		i++;
 	if (s[i] == '\0')
 	{
 		free(s);
