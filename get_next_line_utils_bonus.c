@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ceduard2 <ceduard2@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: linuxusr <linuxusr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 11:29:59 by linuxusr          #+#    #+#             */
-/*   Updated: 2021/10/03 18:50:30 by ceduard2         ###   ########.fr       */
+/*   Updated: 2021/10/05 22:37:37 by linuxusr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(char *s)
 {
